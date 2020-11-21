@@ -136,7 +136,6 @@ class FirebaseCppSDK(ConanFile):
             'armv7': 'armeabi-v7a',
             'armv7hf': 'armeabi-v7a-hard',
             'armv8': 'arm64-v8a',
-            'x86': 'i386'
         }.get(arch, arch)
 
         # Convert conan libcpp to firebase libcpp

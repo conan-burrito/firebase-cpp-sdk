@@ -1,7 +1,7 @@
 name: build
 
 env:
-  CONAN_REFERENCE: "firebase-sdk/6.16.1"
+  CONAN_REFERENCE: "firebase-cpp-sdk/6.16.1"
   CONAN_USERNAME: "conan-burrito"
   CONAN_UPLOAD: "https://conan.yobasoft.de"
   CONAN_STABLE_BRANCH_PATTERN: "release/*"

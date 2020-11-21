@@ -1,0 +1,7 @@
+sources:
+  "6.16.1":
+    url: "https://dl.google.com/firebase/sdk/cpp/firebase_cpp_sdk_6.16.1.zip"
+    sha256: "224195fca901881316dd69922b6fb3c544ede9e378eb6028792a1baa1281e87a"
+
+patches:
+  "6.16.1": []

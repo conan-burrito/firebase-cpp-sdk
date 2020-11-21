@@ -106,7 +106,7 @@ class FirebaseCppSDK(ConanFile):
 
         names = self.collect_library_names()
         for name in names:
-            src_dir = os.path.join(self.source_subfolder, 'windows', 'VS2015', runtime, arch, build_type)
+            src_dir = os.path.join(self.source_subfolder, 'libs', 'windows', 'VS2015', runtime, arch, build_type)
             self.copy('{}.lib'.format(name), dst='lib', src=src_dir, keep_path=False)
 
     def copy_linux_libs(self):
@@ -174,8 +174,6 @@ class FirebaseCppSDK(ConanFile):
         names = self.collect_library_names()
         for name in names:
             src_dir = os.path.join(self.source_subfolder, 'libs', 'ios', arch)
-            self.output.info('Src: %s' % src_dir)
-            self.output.info('Name: %s' % name)
             self.copy('lib{}.a'.format(name), dst='lib', src=src_dir, keep_path=False)
 
     def package(self):
@@ -201,3 +199,5 @@ class FirebaseCppSDK(ConanFile):
 
         if self.settings.os == 'Macos':
             self.cpp_info.exelinkflags = ['-framework CoreFoundation', '-framework Security']
+        if self.settings.os == 'Android':
+            self.cpp_info.libs.append('log')

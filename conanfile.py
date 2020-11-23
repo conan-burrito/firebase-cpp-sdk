@@ -47,6 +47,42 @@ class FirebaseCppSDK(ConanFile):
         if self.options.with_admob and not self.options.with_analytics:
             raise Exception('AdMob requires analytics')
 
+        if not self.settings.os == 'iOS':
+            if self.options.with_admob:
+                self.options['firebase-ios-sdk'].with_analytics = True
+                # Firebase/AdMob?
+
+            if self.options.with_analytics:
+                self.options['firebase-ios-sdk'].with_analytics = True
+
+            if self.options.with_authentication:
+                self.options['firebase-ios-sdk'].with_auth = True
+
+            if self.options.with_cloud_functions:
+                self.options['firebase-ios-sdk'].with_functions = True
+
+            if self.options.with_cloud_messaging:
+                self.options['firebase-ios-sdk'].with_analytics = True
+                self.options['firebase-ios-sdk'].with_messaging = True
+
+            if self.options.with_cloud_storage:
+                self.options['firebase-ios-sdk'].with_storage = True
+
+            if self.options.with_dynamic_links:
+                self.options['firebase-ios-sdk'].with_dynamic_links = True
+
+            if self.options.with_realtime_database:
+                self.options['firebase-ios-sdk'].with_database = True
+
+            if self.options.with_remote_config:
+                self.options['firebase-ios-sdk'].with_remote_config = True
+
+    def requirements(self):
+        if not self.settings.os == 'iOS':
+            return
+
+        self.requires('firebase-ios-sdk/6.32.2@conan-burrito/stable')
+
     @property
     def source_subfolder(self):
         return 'src'

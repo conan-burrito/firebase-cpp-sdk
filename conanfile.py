@@ -185,8 +185,10 @@ class FirebaseCppSDK(ConanFile):
             src_dir = os.path.join(android_root, arch, libcpp)
             self.copy('lib{}.a'.format(name), dst='lib', src=src_dir, keep_path=False)
 
-        self.copy('*.pro', dst=os.path.join('share', 'proguard'), src=android_root, keep_path=False)
-        self.copy('*.gradle', dst=os.path.join('share', 'gradle'), src=self.source_subfolder, keep_path=False)
+        dest = os.path.join('share', 'libs', 'android')
+        self.copy('*.pro', dst=dest, src=android_root, keep_path=False)
+        self.copy('*.aar', dst=dest, src=android_root, keep_path=False)
+        self.copy('*.gradle', dst=dest, src=self.source_subfolder, keep_path=False)
 
     def copy_macos_libs(self):
         arch = str(self.settings.arch)

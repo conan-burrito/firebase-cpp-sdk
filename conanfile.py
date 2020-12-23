@@ -78,10 +78,8 @@ class FirebaseCppSDK(ConanFile):
                 self.options['firebase-ios-sdk'].with_remote_config = True
 
     def requirements(self):
-        if not self.settings.os == 'iOS':
-            return
-
-        self.requires('firebase-ios-sdk/6.32.2@conan-burrito/stable')
+        if self.settings.os == 'iOS':
+            self.requires('firebase-ios-sdk/7.3.0@conan-burrito/stable')
 
     @property
     def source_subfolder(self):

@@ -47,10 +47,10 @@ class FirebaseCppSDK(ConanFile):
         if self.options.with_admob and not self.options.with_analytics:
             raise Exception('AdMob requires analytics')
 
-        if not self.settings.os == 'iOS':
+        if self.settings.os == 'iOS':
             if self.options.with_admob:
                 self.options['firebase-ios-sdk'].with_analytics = True
-                # Firebase/AdMob?
+                self.options['firebase-ios-sdk'].with_mobile_ads_sdk = True
 
             if self.options.with_analytics:
                 self.options['firebase-ios-sdk'].with_analytics = True
